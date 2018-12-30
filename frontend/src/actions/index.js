@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const CREATE_USER = 'create_user';
-export const LOGIN_USER = 'login_user';
+export const USER_TOKEN = 'USER_TOKEN';
 const ROOT_URL = 'http://localhost:8000/api';
 
 
@@ -14,12 +14,12 @@ export function createProUser(values, callback) {
     };
 }
 
-export function loginUser(values, callback) {
+export function getToken(values, callback) {
     const request = axios.post(`${ROOT_URL}/login/`, values)
         .then((response) => console.log(response.data.token)); 
 
     return{
-        type: LOGIN_USER,
+        type: USER_TOKEN,
         payload: request
     };
 }

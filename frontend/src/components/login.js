@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import {loginUser} from '../actions/index';
+import {getToken} from '../actions/index';
 
-class Login extends Component {
+class Token extends Component {
     renderField(field) {
         const className=`form-group ${field.meta.touched && field.meta.error ? 'has-danger':''}`;
         
@@ -20,7 +20,7 @@ class Login extends Component {
     }
 
     onSubmit(values) {
-        this.props.loginUser(values, () => {
+        this.props.getToken(values, () => {
             this.props.history.push('/profile');
         });
     }
@@ -34,18 +34,25 @@ class Login extends Component {
                 </div>
                 <div className='card-content'>
                     <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                        <Field 
-                            label='Email'
-                            name='username'
-                            component={this.renderField}
-                        />
-                        <Field 
-                            label='Password'
-                            name='password'
-                            type='password'
-                            component={this.renderField}
-                        />
-                        <button className='btn btn-primary' type='submit'>
+                        <fieldset>
+                            <label>Email</label>
+                            <Field
+                                name='username'
+                                component="input"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <label>Password</label>
+                            <Field
+                                name='password'
+                                type='password'
+                                component='input'
+                            />
+                        </fieldset>
+                        <button 
+                            className='btn btn-primary' 
+                            type='submit'
+                        >
                             Login
                         </button>
                     </form>
@@ -57,7 +64,7 @@ class Login extends Component {
 
 
 export default reduxForm({
-    form: 'RegistrationForm',
+    form: 'LoginForm',
 })(
-    connect(null, {loginUser})(Login)
+    connect(null, {getToken})(Token)
     );

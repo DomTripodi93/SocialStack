@@ -24,7 +24,7 @@ class Register extends Component {
 
     onSubmit(values) {
         this.props.createProUser(values, () => {
-            this.props.history.push('/login');
+            this.props.history.push('/Login');
         });
     }
 
@@ -37,22 +37,28 @@ class Register extends Component {
                 </div>
                 <div className='card-content'>
                     <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                        <Field 
-                            label='Email'
-                            name='email'
-                            component={this.renderField}
-                        />
-                        <Field 
-                            label='Name'
-                            name='name'
-                            component={this.renderField}
-                        />
-                        <Field 
-                            label='Password'
-                            name='password'
-                            type='password'
-                            component={this.renderField}
-                        />
+                        <fieldset>
+                            <label>Email</label>
+                            <Field
+                                name='username'
+                                component="input"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <label>Name</label>
+                            <Field 
+                                name='name'
+                                component={this.renderField}
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <label>Password</label>
+                            <Field
+                                name='password'
+                                type='password'
+                                component='input'
+                            />
+                        </fieldset>
                         <button className='btn btn-primary' type='submit'>
                             Submit
                         </button>
