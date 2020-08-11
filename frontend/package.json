@@ -13,7 +13,7 @@
     "redux": "^4.0.4",
     "redux-form": "^7.4.2",
     "redux-promise": "^0.6.0",
-    "yarn": "^1.12.3"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
